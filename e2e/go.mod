@@ -47,8 +47,8 @@ require (
 	github.com/argoproj/argo-cd/v2 v2.4.8
 	github.com/aws/aws-sdk-go v1.44.262
 	github.com/external-secrets/external-secrets v0.0.0
-	github.com/fluxcd/helm-controller/api v0.22.2
-	github.com/fluxcd/pkg/apis/meta v0.14.2
+	github.com/fluxcd/helm-controller/api v0.26.0
+	github.com/fluxcd/pkg/apis/meta v0.17.0
 	github.com/fluxcd/source-controller/api v0.25.11
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/hashicorp/vault/api v1.9.1
@@ -105,7 +105,7 @@ require (
 	github.com/exponent-io/jsonpath v0.0.0-20151013193312-d6023ce2651d // indirect
 	github.com/fatih/camelcase v1.0.0 // indirect
 	github.com/fluxcd/pkg/apis/acl v0.0.3 // indirect
-	github.com/fluxcd/pkg/apis/kustomize v0.4.1 // indirect
+	github.com/fluxcd/pkg/apis/kustomize v0.6.0 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/fvbommel/sortorder v1.0.1 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
