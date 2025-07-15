@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../pictures/eso-round-logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -4648,6 +4648,49 @@ NTLMProtocol
 </tr>
 </tbody>
 </table>
+<h3 id="external-secrets.io/v1.AzureAuthCredentials">AzureAuthCredentials
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1.InfisicalAuth">InfisicalAuth</a>)
+</p>
+<p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>identityId</code></br>
+<em>
+<a href="https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector">
+External Secrets meta/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<code>resource</code></br>
+<em>
+<a href="https://pkg.go.dev/github.com/external-secrets/external-secrets/apis/meta/v1#SecretKeySelector">
+External Secrets meta/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+</td>
+</tr>
+</tbody>
+</table>
 <h3 id="external-secrets.io/v1.AzureAuthType">AzureAuthType
 (<code>string</code> alias)</p></h3>
 <p>
@@ -5334,6 +5377,7 @@ External Secrets meta/v1.SecretKeySelector
 <a href="#external-secrets.io/v1.AkeylessProvider">AkeylessProvider</a>, 
 <a href="#external-secrets.io/v1.BitwardenSecretsManagerProvider">BitwardenSecretsManagerProvider</a>, 
 <a href="#external-secrets.io/v1.ConjurProvider">ConjurProvider</a>, 
+<a href="#external-secrets.io/v1.GitlabProvider">GitlabProvider</a>, 
 <a href="#external-secrets.io/v1.KubernetesServer">KubernetesServer</a>, 
 <a href="#external-secrets.io/v1.VaultProvider">VaultProvider</a>)
 </p>
@@ -7665,6 +7709,21 @@ map[string]string
 <tbody>
 <tr>
 <td>
+<code>merge</code></br>
+<em>
+<a href="#external-secrets.io/v1.ExternalSecretRewriteMerge">
+ExternalSecretRewriteMerge
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Used to merge key/values in one single Secret
+The resulting key will contain all values from the specified secrets</p>
+</td>
+</tr>
+<tr>
+<td>
 <code>regexp</code></br>
 <em>
 <a href="#external-secrets.io/v1.ExternalSecretRewriteRegexp">
@@ -7694,6 +7753,119 @@ The resulting key will be the output of the template applied by the operation.</
 </td>
 </tr>
 </tbody>
+</table>
+<h3 id="external-secrets.io/v1.ExternalSecretRewriteMerge">ExternalSecretRewriteMerge
+</h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1.ExternalSecretRewrite">ExternalSecretRewrite</a>)
+</p>
+<p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>into</code></br>
+<em>
+string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Used to define the target key of the merge operation.
+Required if strategy is JSON. Ignored otherwise.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>priority</code></br>
+<em>
+[]string
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Used to define key priority in conflict resolution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>conflictPolicy</code></br>
+<em>
+<a href="#external-secrets.io/v1.ExternalSecretRewriteMergeConflictPolicy">
+ExternalSecretRewriteMergeConflictPolicy
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Used to define the policy to use in conflict resolution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>strategy</code></br>
+<em>
+<a href="#external-secrets.io/v1.ExternalSecretRewriteMergeStrategy">
+ExternalSecretRewriteMergeStrategy
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Used to define the strategy to use in the merge operation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-secrets.io/v1.ExternalSecretRewriteMergeConflictPolicy">ExternalSecretRewriteMergeConflictPolicy
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1.ExternalSecretRewriteMerge">ExternalSecretRewriteMerge</a>)
+</p>
+<p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr><td><p>&#34;Error&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;Ignore&#34;</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h3 id="external-secrets.io/v1.ExternalSecretRewriteMergeStrategy">ExternalSecretRewriteMergeStrategy
+(<code>string</code> alias)</p></h3>
+<p>
+(<em>Appears on:</em>
+<a href="#external-secrets.io/v1.ExternalSecretRewriteMerge">ExternalSecretRewriteMerge</a>)
+</p>
+<p>
+</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr><td><p>&#34;Extract&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;JSON&#34;</p></td>
+<td></td>
+</tr></tbody>
 </table>
 <h3 id="external-secrets.io/v1.ExternalSecretRewriteRegexp">ExternalSecretRewriteRegexp
 </h3>
@@ -8954,6 +9126,33 @@ string
 <p>Environment environment_scope of gitlab CI/CD variables (Please see <a href="https://docs.gitlab.com/ee/ci/environments/#create-a-static-environment">https://docs.gitlab.com/ee/ci/environments/#create-a-static-environment</a> on how to create environments)</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>caBundle</code></br>
+<em>
+[]byte
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Base64 encoded certificate for the GitLab server sdk. The sdk MUST run with HTTPS to make sure no MITM attack
+can be performed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>caProvider</code></br>
+<em>
+<a href="#external-secrets.io/v1.CAProvider">
+CAProvider
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>see: <a href="https://external-secrets.io/latest/spec/#external-secrets.io/v1alpha1.CAProvider">https://external-secrets.io/latest/spec/#external-secrets.io/v1alpha1.CAProvider</a></p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="external-secrets.io/v1.GitlabSecretRef">GitlabSecretRef
@@ -9177,6 +9376,19 @@ string
 <em>
 <a href="#external-secrets.io/v1.UniversalAuthCredentials">
 UniversalAuthCredentials
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+</td>
+</tr>
+<tr>
+<td>
+<code>azureAuthCredentials</code></br>
+<em>
+<a href="#external-secrets.io/v1.AzureAuthCredentials">
+AzureAuthCredentials
 </a>
 </em>
 </td>
@@ -9948,7 +10160,7 @@ string
 </em>
 </td>
 <td>
-<p>Vault defines the vault&rsquo;s name to access. Do NOT add op:// prefix. This will be done automatically.</p>
+<p>Vault defines the vault&rsquo;s name or uuid to access. Do NOT add op:// prefix. This will be done automatically.</p>
 </td>
 </tr>
 <tr>
@@ -14249,7 +14461,7 @@ For a list of trademarks of The Linux Foundation, please see our <a href="https:
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
